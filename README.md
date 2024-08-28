@@ -1,17 +1,19 @@
-# 22 nd Polyglot solution 
+# 104th Santa 2023 - The Polytope Permutation Puzzle solution 
 
-## PB score timeline
-Ensemble Gmean of top score public submissions -> 0.9473 (8 June)
-Ensemble LGBM solution and Gmean submission -> 0.9478 (10 June)
-(Magic) Add external data to validate dataset and change to validate by language in second step training of XLM and ensemble by language -> 0.9500 (21 June)
-Unfortunately, we boosted the score to 0.9500 in the last 2 days but no more TPU left to train new external data.
+## Evaluation
+A permutation puzzle comprises a solution state, an initial state, and a set of allowed moves.
 
-## Validate Dataset
-We separated validate data to 3 set by language and find another 3 languages from external data to use in second step training in @riblidezso notebook. The out of fold score looks promising so we blend them to our main submission and boost the score to 0.9500.
+The solution state and initial state are arrangements of symbols we call colors, while the moves for a puzzle correspond to certain permutations of these arrangements.
+
+A sequence of moves solves a puzzle if applying each permutation in the sequence to the puzzle's initial_state results in the puzzle's solution_state, and we call such a sequence a solution to the puzzle.
+
+Additionally, a few of the elves have discovered that they can rearrange some of the stickers on a puzzle instead of applying moves, and so a puzzle may also be allotted wildcards. In this case, the resulting state may differ up to the puzzle's num_wildcards and the sequence will still be considered a solution.
+
+The overall score for a submission is the total number of moves in all of its puzzle solutions. The goal of the competition is to solve all of the given puzzles in the fewest moves.
+
+You may view the evaluation metric here: Santa 2023 Metric.
 
 ## References
-- Gmean notebook: https://www.kaggle.com/paulorzp/gmean-of-low-correlation-lb-0-952x
-- XLM-Roberta: https://www.kaggle.com/riblidezso/train-from-mlm-finetuned-xlm-roberta-large
-- LGBM solution: https://www.kaggle.com/miklgr500/lgbm-solution
-- External data: https://www.kaggle.com/blackmoon/russian-language-toxic-comments , https://www.kaggle.com/shonenkov/open-subtitles-toxic-pseudo-labeling
-- (Magic) Validate and fine-tuned by language: https://www.kaggle.com/medrau/train-from-mlm-finetuned-val-per-lang
+- Current Best Submission : https://www.kaggle.com/code/isaienkov/current-best-submission
+- Solve All NxNxN Cubes w Traditional Solution State: https://www.kaggle.com/code/seanbearden/solve-all-nxnxn-cubes-w-traditional-solution-state
+- [A-Star Algorithm] Polytope Permutation: https://www.kaggle.com/code/whats2000/a-star-algorithm-polytope-permutation
